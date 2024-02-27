@@ -1,6 +1,15 @@
-// widgetbook for flutter ui library
+# widgetbook for flutter ui library
+
 https://github.com/kanha-pakkhemaya/widgetbook-for-flutter-ui-library/tree/master
 
+## Getting Started
+
+Todo: ###
+
+## How to use
+
+```dart
+// ตัวอย่างการเรียกใช้งาน
 import 'package:flutter_ui_library/flutter_ui_library.dart';
 import 'package:flutter/material.dart';
 
@@ -14,12 +23,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Button Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Button Demo Home Page'),
     );
   }
 }
@@ -33,7 +42,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-// Default Button
+// Default Button *** Ex1 ***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -49,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// Default Button
+// Default Button ***Ex2***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -65,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// Example Button
+// Example Button ***Ex3***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -92,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// Example TextStyle
+// Example TextStyle ***Ex4***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -114,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// Example Loading
+// Example Loading ***Ex5***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -135,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// Example Disable
+// Example Disable ***Ex6***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -153,5 +162,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
------------------------------------------------------------
+```
