@@ -6,7 +6,7 @@ https://github.com/kanha-pakkhemaya/widgetbook-for-flutter-ui-library/tree/maste
 
 Todo: ###
 
-## How to use library Button
+## How to use library Button *** all parameters are optional. ***
 
 ```dart
 // Example of usage
@@ -42,7 +42,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-// Default Button *** Ex1 ***
+// Default Button No Sent Param *** Ex1 ***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// Default Button ***Ex2***
+// Example Button Sent Param All ***Ex2***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,28 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: const Center(
-        child: Button(),
+        child: Button(
+          title: 'Button',
+          backgroundColor: Color(0xFFFFFFFF),
+          width: 150,
+          height: 50,
+          textStyle: TextStyle(
+            color: Color(0xFF000000),
+            fontSize: 14,
+            fontWeight: FontWeight.normal,
+          ),
+          fontColor: Color(0xFF000000),
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          // TOdo onPress:()=>{},
+          borderRadius: 30.0,
+          borderRadiusColor: Color(0xFF000000),
+          disableColor: Color(0xFFD9D9D9),
+          loadingIconColor: Color(0xFFD9D9D9),
+          strokeWidth: 4.0,
+          loadingIconWidth: 0.0,
+          statusButton: 'enable', // state sent param to statusButton => 'enable'  , 'disable' , 'loading'
+        ),
       ),
     );
   }
