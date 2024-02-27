@@ -1,2 +1,2 @@
 library flutter_ui_library;
-export 'src/index.dart';
+export './src/button_ui.dart';
