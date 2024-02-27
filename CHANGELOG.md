@@ -10,6 +10,8 @@
 * TODO: Fix README.md 
 ## 0.0.6
 * TODO: Fix document
+## 0.0.7
+* TODO: Fix document
 
 
 
