@@ -12,8 +12,6 @@
 * TODO: Fix document
 ## 0.0.7
 * TODO: Fix document
-## 0.0.8
-* TODO: tets
 
 
 
