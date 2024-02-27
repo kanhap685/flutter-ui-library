@@ -1,6 +1,6 @@
 name: flutter_ui_library
 description: "A flutter ui library package"
-version: 0.0.1
+version: 0.0.3
 homepage: https://github.com/kanha-pakkhemaya/widgetbook-for-flutter-ui-library.git
 
 environment:
