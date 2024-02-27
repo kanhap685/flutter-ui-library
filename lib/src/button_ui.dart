@@ -12,31 +12,31 @@ class Button extends StatefulWidget {
   final VoidCallback? onPress;
   final double? borderRadius;
   final Color? borderRadiusColor;
-  final Color? hoverColor;
+  final Color? disableColor;
   final Color? loadingIconColor;
   final double? strokeWidth;
   final double? loadingIconWidth;
   final String? statusButton;
-  
-  const Button(
-      {super.key,
-      this.title,
-      this.backgroundColor = const Color(0xFFFFFFFF),
-      this.width = 150,
-      this.height = 50,
-      this.textStyle,
-      this.borderRadius,
-      this.borderRadiusColor,
-      this.fontSize,
-      this.fontWeight,
-      this.fontColor,
-      this.onPress,
-      this.hoverColor = const Color(0xFFD9D9D9),
-      this.loadingIconColor,
-      this.strokeWidth,
-      this.loadingIconWidth,
-      this.statusButton = 'enable',
-      });
+
+  const Button({
+    super.key,
+    this.title,
+    this.backgroundColor = const Color(0xFFFFFFFF),
+    this.width = 150,
+    this.height = 50,
+    this.textStyle,
+    this.borderRadius,
+    this.borderRadiusColor,
+    this.fontSize,
+    this.fontWeight,
+    this.fontColor,
+    this.onPress,
+    this.disableColor = const Color(0xFFD9D9D9),
+    this.loadingIconColor,
+    this.strokeWidth,
+    this.loadingIconWidth,
+    this.statusButton = 'enable',
+  });
 
   @override
   State<Button> createState() => _ButtonState();
@@ -72,7 +72,7 @@ class _ButtonState extends State<Button> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
                 widget.borderRadius == null ? 30.0 : widget.borderRadius!),
-            color: _isDisable ? widget.hoverColor : widget.backgroundColor,
+            color: _isDisable ? widget.disableColor : widget.backgroundColor,
             border: Border.all(
               color: widget.borderRadiusColor ?? const Color(0xFF000000),
               width: 1,
