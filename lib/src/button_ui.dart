@@ -9,7 +9,7 @@ class Button extends StatefulWidget {
   final Color? fontColor;
   final double? fontSize;
   final FontWeight? fontWeight;
-  final VoidCallback? onPress;
+  final VoidCallback? onPressed;
   final double? borderRadius;
   final Color? borderRadiusColor;
   final Color? disableColor;
@@ -30,7 +30,7 @@ class Button extends StatefulWidget {
     this.fontSize,
     this.fontWeight,
     this.fontColor,
-    this.onPress,
+    this.onPressed,
     this.disableColor = const Color(0xFFD9D9D9),
     this.loadingIconColor,
     this.strokeWidth,
@@ -65,7 +65,7 @@ class _ButtonState extends State<Button> {
               widget.statusButton == 'loading' ||
               widget.statusButton == 'disable') return;
 
-          widget.onPress?.call();
+          widget.onPressed!();
           setState(() => _isDisable = true);
         },
         child: Container(
