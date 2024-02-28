@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Button extends StatefulWidget {
+class UiButton extends StatefulWidget {
   final String? title;
   final Color? backgroundColor;
   final double? width;
@@ -18,7 +18,7 @@ class Button extends StatefulWidget {
   final double? loadingIconWidth;
   final String? statusButton;
 
-  const Button({
+  const UiButton({
     super.key,
     this.title,
     this.backgroundColor = const Color(0xFFFFFFFF),
@@ -39,10 +39,10 @@ class Button extends StatefulWidget {
   });
 
   @override
-  State<Button> createState() => _ButtonState();
+  State<UiButton> createState() => _UiButtonState();
 }
 
-class _ButtonState extends State<Button> {
+class _UiButtonState extends State<UiButton> {
   bool _isDisable = false;
 
   @override

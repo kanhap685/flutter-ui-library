@@ -7,7 +7,7 @@ https://github.com/kanha-pakkhemaya/widgetbook-for-flutter-ui-library/tree/maste
 
 Todo: ###
 
-## How to use library Button
+## How to use library UiButton
 
 ```dart
 // Example of usage
@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Button Demo',
+      title: 'Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Button Demo Home Page'),
+      home: const MyHomePage(title: 'Demo Home Page'),
     );
   }
 }
@@ -45,7 +45,7 @@ class MyHomePage extends StatefulWidget {
 ```
 
 ```dart
-// Example Default Button No Sent Param *** Ex1 ***
+// Example Default UiButton No Sent Param *** Ex1 ***
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: const Center(
-        child: Button(),
+        child: UiButton(),
       ),
     );
   }
@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 ```dart
-// Example Button Sent Param All ***Ex2 ***
+// Example UiButton Sent Param All ***Ex2 ***
 
 /// *** All parameters are optional. ***
 class _MyHomePageState extends State<MyHomePage> {
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: const Center(
-        child: Button(
+        child: UiButton(
           onPressed: () {
             /// Your onTap logic here
           },
