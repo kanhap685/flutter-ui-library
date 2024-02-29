@@ -1,7 +1,7 @@
 # flutter_ui_library
 
-/// clone repository view widgetbook for flutter_ui_library
-https://github.com/kanha-pakkhemaya/widgetbook-for-flutter-ui-library/tree/master
+/// Wait, it's being created. >>> widgetbook for flutter_ui_library
+
 
 ## Getting Started
 
