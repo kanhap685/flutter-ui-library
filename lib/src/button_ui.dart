@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Button extends StatefulWidget {
+class UiButton extends StatefulWidget {
   final String? title;
   final Color? backgroundColor;
   final double? width;
@@ -9,7 +9,7 @@ class Button extends StatefulWidget {
   final Color? fontColor;
   final double? fontSize;
   final FontWeight? fontWeight;
-  final VoidCallback? onPress;
+  final VoidCallback? onPressed;
   final double? borderRadius;
   final Color? borderRadiusColor;
   final Color? disableColor;
@@ -18,7 +18,7 @@ class Button extends StatefulWidget {
   final double? loadingIconWidth;
   final String? statusButton;
 
-  const Button({
+  const UiButton({
     super.key,
     this.title,
     this.backgroundColor = const Color(0xFFFFFFFF),
@@ -30,7 +30,7 @@ class Button extends StatefulWidget {
     this.fontSize,
     this.fontWeight,
     this.fontColor,
-    this.onPress,
+    this.onPressed,
     this.disableColor = const Color(0xFFD9D9D9),
     this.loadingIconColor,
     this.strokeWidth,
@@ -39,10 +39,10 @@ class Button extends StatefulWidget {
   });
 
   @override
-  State<Button> createState() => _ButtonState();
+  State<UiButton> createState() => _UiButtonState();
 }
 
-class _ButtonState extends State<Button> {
+class _UiButtonState extends State<UiButton> {
   bool _isDisable = false;
 
   @override
@@ -65,7 +65,7 @@ class _ButtonState extends State<Button> {
               widget.statusButton == 'loading' ||
               widget.statusButton == 'disable') return;
 
-          widget.onPress?.call();
+          widget.onPressed!();
           setState(() => _isDisable = true);
         },
         child: Container(

@@ -1,12 +1,13 @@
-# widgetbook for view library: flutter_ui_library
-// widget book view ui  
-https://github.com/kanha-pakkhemaya/widgetbook-for-flutter-ui-library/tree/master
+# flutter_ui_library
+
+/// Wait, it's being created. >>> widgetbook for flutter_ui_library
+
 
 ## Getting Started
 
 Todo: ###
 
-## How to use library Button *** all parameters are optional. ***
+## How to use library UiButton
 
 ```dart
 // Example of usage
@@ -23,12 +24,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Button Demo',
+      title: 'Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Button Demo Home Page'),
+      home: const MyHomePage(title: 'Demo Home Page'),
     );
   }
 }
@@ -41,8 +42,11 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+```
 
-// Default Button No Sent Param *** Ex1 ***
+```dart
+// Example Default UiButton No Sent Param *** Ex1 ***
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -52,13 +56,18 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: const Center(
-        child: Button(),
+        child: UiButton(),
       ),
     );
   }
 }
 
-// Example Button Sent Param All ***Ex2***
+```
+
+```dart
+// Example UiButton Sent Param All ***Ex2 ***
+
+/// *** All parameters are optional. ***
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -68,119 +77,33 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: const Center(
-        child: Button(
+        child: UiButton(
+          onPressed: () {
+            /// Your onTap logic here
+          },
           title: 'Button',
-          backgroundColor: Color(0xFFFFFFFF),
+          backgroundColor: const Color(0xFFFFFFFF),
           width: 150,
           height: 50,
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             color: Color(0xFF000000),
             fontSize: 14,
             fontWeight: FontWeight.normal,
           ),
-          fontColor: Color(0xFF000000),
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-          // TOdo onPress:()=>{},
-          borderRadius: 30.0,
-          borderRadiusColor: Color(0xFF000000),
-          disableColor: Color(0xFFD9D9D9),
-          loadingIconColor: Color(0xFFD9D9D9),
-          strokeWidth: 4.0,
-          loadingIconWidth: 0.0,
-          statusButton: 'enable', // state sent param to statusButton => 'enable'  , 'disable' , 'loading'
-        ),
-      ),
-    );
-  }
-}
-
-// Example Button ***Ex3***
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Button(
-          title: 'Button',
-          backgroundColor: Color.fromARGB(255, 176, 233, 101),
-          width: 150,
-          height: 50,
-          fontColor: Color.fromARGB(255, 242, 3, 250),
+          fontColor: const Color(0xFF000000),
           fontSize: 14,
           fontWeight: FontWeight.normal,
           borderRadius: 30.0,
-          borderRadiusColor: Color.fromARGB(255, 194, 48, 48),
-          statusButton: 'enable',
-        ),
-      ),
-    );
-  }
-}
-
-// Example TextStyle ***Ex4***
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Button(
-          textStyle: TextStyle(
-            color: Color.fromARGB(255, 248, 3, 3),
-            fontSize: 14,
-            fontWeight: FontWeight.normal,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// Example Loading ***Ex5***
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Button(
-          statusButton: 'loading',
+          borderRadiusColor: const Color(0xFF000000),
+          disableColor: const Color(0xFFD9D9D9),
+          loadingIconColor: const Color(0xFFD9D9D9),
           strokeWidth: 4.0,
           loadingIconWidth: 0.0,
-          loadingIconColor: Color.fromARGB(255, 1, 250, 34),
+          statusButton: 'loading', /// 'enable'  , 'disable' , 'loading'
         ),
       ),
     );
   }
 }
 
-// Example Disable ***Ex6***
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Button(
-          statusButton: 'disable',
-          disableColor: Color(0xFFD9D9D9),
-        ),
-      ),
-    );
-  }
-}
 ```
