@@ -65,7 +65,7 @@ class _UiButtonState extends State<UiButton> {
               widget.statusButton == 'loading' ||
               widget.statusButton == 'disable') return;
 
-          widget.onPressed?.call();
+          widget.onPressed!();
           setState(() => _isDisable = true);
         },
         child: Container(
