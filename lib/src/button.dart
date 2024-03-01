@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_library/src/log_developer_color.dart';
 
 class UiButton extends StatefulWidget {
   final String? title;
@@ -9,14 +10,14 @@ class UiButton extends StatefulWidget {
   final Color? fontColor;
   final double? fontSize;
   final FontWeight? fontWeight;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
   final double? borderRadius;
   final Color? borderRadiusColor;
   final Color? disableColor;
   final Color? loadingIconColor;
   final double? strokeWidth;
   final double? loadingIconWidth;
-  final String? statusButton;
+  final String statusButton;
 
   const UiButton({
     super.key,
@@ -30,12 +31,12 @@ class UiButton extends StatefulWidget {
     this.fontSize,
     this.fontWeight,
     this.fontColor,
-    this.onPressed,
+    required this.onPressed,
     this.disableColor = const Color(0xFFD9D9D9),
     this.loadingIconColor,
     this.strokeWidth,
     this.loadingIconWidth,
-    this.statusButton = 'enable',
+    required this.statusButton,
   });
 
   @override
@@ -45,29 +46,39 @@ class UiButton extends StatefulWidget {
 class _UiButtonState extends State<UiButton> {
   bool _isDisable = false;
 
+  bool checkStatusOnPressed() {
+    if (_isDisable ||
+        widget.statusButton == 'loading' ||
+        widget.statusButton == 'disable') {
+      return false;
+    }
+
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (widget.statusButton == 'enable' || widget.statusButton == null) {
+    if (widget.statusButton == 'enable') {
       _isDisable = false;
     }
 
-    if (widget.statusButton == 'disable' || widget.statusButton == null) {
+    if (widget.statusButton == 'disable') {
       _isDisable = true;
     }
+
+    bool isEnable = checkStatusOnPressed();
 
     return Container(
       margin: const EdgeInsets.only(bottom: 5, top: 5),
       width: widget.width,
       height: widget.height,
       child: GestureDetector(
-        onTap: () {
-          if (_isDisable ||
-              widget.statusButton == 'loading' ||
-              widget.statusButton == 'disable') return;
-
-          widget.onPressed!();
-          setState(() => _isDisable = true);
-        },
+        onTap: isEnable == true
+            ? () => {
+                  widget.onPressed(),
+                  setState(() => _isDisable = true),
+                }
+            : null,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
