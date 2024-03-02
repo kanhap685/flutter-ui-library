@@ -1,44 +1,44 @@
 import 'package:flutter/material.dart';
 
-class UiRadioButton extends StatefulWidget {
+class UiCheckbox extends StatefulWidget {
   final Function(dynamic) onSelected;
   final List<Map<String, dynamic>> options;
-  final EdgeInsets? paddingRadio;
+  final EdgeInsets? paddingCheckbox;
   final Color? bulletColor;
   final Axis direction;
   final double? width;
   final double? height;
-  final EdgeInsets? paddingRadioText;
-  final TextStyle? radioTextStyle;
-  final int? selectedOptionId;
+  final EdgeInsets? paddingCheckboxText;
+  final TextStyle? checkboxTextStyle;
 
-  const UiRadioButton({
+  const UiCheckbox({
     super.key,
     required this.onSelected,
     required this.options,
-    this.paddingRadio,
+    this.paddingCheckbox,
     this.bulletColor,
     required this.direction,
     this.width,
     this.height,
-    this.paddingRadioText,
-    this.radioTextStyle = const TextStyle(
+    this.paddingCheckboxText,
+    this.checkboxTextStyle = const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.bold,
       color: Colors.blue,
     ),
-    this.selectedOptionId,
   });
 
   @override
-  State<UiRadioButton> createState() => _UiRadioButtonState();
+  State<UiCheckbox> createState() => _UiCheckboxState();
 }
 
-class _UiRadioButtonState extends State<UiRadioButton> {
+class _UiCheckboxState extends State<UiCheckbox> {
   dynamic selectedOptionId;
 
   setSelectedRadioId(dynamic id) {
-    setState(() => selectedOptionId = id);
+    setState(() {
+      selectedOptionId = id;
+    });
   }
 
   @override
@@ -54,39 +54,39 @@ class _UiRadioButtonState extends State<UiRadioButton> {
               itemCount: widget.options.length,
               shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
-                final options = widget.options[index];
+                var options = widget.options[index];
                 return Row(
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          options['selected'] = !options['selected'];
+                          options['checked'] = !options['checked'];
                         });
                         widget.onSelected(options['id']);
                       },
                       child: Padding(
-                        padding: widget.paddingRadio ??
+                        padding: widget.paddingCheckbox ??
                             const EdgeInsets.only(
                                 left: 0, right: 0, top: 0, bottom: 0),
-                        child: Radio(
+                        child: Checkbox(
                           activeColor: widget.bulletColor,
-                          value: options['id'],
-                          groupValue:
-                              selectedOptionId ?? widget.selectedOptionId,
-                          onChanged: (val) {
+                          value: options['checked'],
+                          onChanged: (bool? value) {
+                            setState(() {
+                              options['checked'] = value ?? false;
+                            });
                             widget.onSelected(options);
-                            setSelectedRadioId(val);
                           },
                         ),
                       ),
                     ),
                     Padding(
-                      padding: widget.paddingRadioText ??
+                      padding: widget.paddingCheckboxText ??
                           const EdgeInsets.only(
                               left: 0, right: 0, top: 0, bottom: 0),
                       child: Text(
                         options['value'],
-                        style: widget.radioTextStyle,
+                        style: widget.checkboxTextStyle,
                       ),
                     ),
                   ],
