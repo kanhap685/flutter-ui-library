@@ -1,6 +1,6 @@
 name: flutter_ui_library
 description: "The flutter_ui_library is a set of components for building UI in Flutter. library flutter_ui_library"
-version: 0.0.12
+version: 0.0.14
 homepage: https://github.com/kanha-pakkhemaya/flutter-ui-library.git
 
 environment:
