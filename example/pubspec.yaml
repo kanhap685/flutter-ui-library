@@ -35,10 +35,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
-  widgetbook_annotation: ^3.1.0
-  widgetbook: ^3.7.1
   flutter_ui_library:
     path: ../../flutter-ui-library
+  storybook_flutter: ^0.14.0
   # flutter_ui_library: ^0.0.13
 
 dev_dependencies:

@@ -3,49 +3,29 @@ import 'package:flutter/material.dart';
 class UiRadioButton extends StatefulWidget {
   final Function(dynamic) onSelected;
   final List<Map<String, dynamic>> options;
-  final TextStyle? radioTextStyle;
-  final ScrollPhysics? scrolling;
   final EdgeInsets? paddingRadio;
-  final EdgeInsets? paddingIcon;
-  final EdgeInsets? paddingList;
-  final TextStyle? titleTextStyle;
-  final TextStyle? subTitleTextStyle;
-  final Widget? customDivider;
-  final double? paddingTop;
-  final double? paddingBottom;
-  final double? minHeightItem;
-  final Color? colorIcon;
-  final bool? isShowRadioButton;
-  final bool? isDivider;
-  final bool isForceReset;
-  final ScrollController? scrollController;
-  final ScrollViewKeyboardDismissBehavior? keyboardDismissBehavior;
   final Color? bulletColor;
   final Axis direction;
+  final double? width;
+  final double? height;
+  final EdgeInsets? paddingRadioText;
+  final TextStyle? radioTextStyle;
 
   const UiRadioButton({
     super.key,
     required this.onSelected,
     required this.options,
-    this.radioTextStyle,
-    this.scrolling,
     this.paddingRadio,
-    this.titleTextStyle,
-    this.subTitleTextStyle,
-    this.colorIcon,
-    this.customDivider,
-    this.isDivider,
-    this.minHeightItem,
-    this.paddingIcon,
-    this.isForceReset = false,
-    this.paddingTop,
-    this.paddingBottom,
-    this.isShowRadioButton = true,
-    this.scrollController,
-    this.keyboardDismissBehavior,
-    this.paddingList,
     this.bulletColor,
-    this.direction = Axis.vertical,
+    required this.direction,
+    this.width,
+    this.height,
+    this.paddingRadioText,
+    this.radioTextStyle = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Colors.blue,
+    ),
   });
 
   @override
@@ -55,42 +35,57 @@ class UiRadioButton extends StatefulWidget {
 class _UiRadioButtonState extends State<UiRadioButton> {
   dynamic selectedOptionId;
 
+  setSelectedRadioId(dynamic id) {
+    setState(() {
+      selectedOptionId = id;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      width: widget.width ?? MediaQuery.of(context).size.width,
+      height: widget.height ?? MediaQuery.of(context).size.width,
       child: Column(
         children: [
           Expanded(
-            child: ListView(
-              // scrollDirection: widget.direction, // Set the scroll direction
+            child: ListView.builder(
+              scrollDirection: widget.direction,
+              itemCount: widget.options.length,
               shrinkWrap: true,
-              children: widget.options
-                  .map((option) => Theme(
-                        data: Theme.of(context).copyWith(),
-                        child: RadioListTile<dynamic>(
+              itemBuilder: (BuildContext context, int index) {
+                final option = widget.options[index];
+                return Row(
+                  children: <Widget>[
+                    GestureDetector(
+                      child: Padding(
+                        padding: widget.paddingRadio ??
+                            const EdgeInsets.only(
+                                left: 0, right: 0, top: 0, bottom: 0),
+                        child: Radio(
                           activeColor: widget.bulletColor,
-                          title: Text(
-                            option['value'],
-                            style: widget.radioTextStyle,
-                          ),
                           value: option['id'],
                           groupValue: selectedOptionId,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedOptionId = value;
-                              widget.onSelected(option);
-                            });
+                          onChanged: (val) {
+                            widget.onSelected(option);
+                            setSelectedRadioId(val);
                           },
                         ),
-                      ))
-                  .toList(),
+                      ),
+                    ),
+                    Padding(
+                      padding: widget.paddingRadioText ??
+                          const EdgeInsets.only(
+                              left: 0, right: 0, top: 0, bottom: 0),
+                      child: Text(
+                        option['value'],
+                        style: widget.radioTextStyle,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            'Selected Option ID: $selectedOptionId',
-            style: widget.radioTextStyle,
           ),
         ],
       ),

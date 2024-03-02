@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_library/src/log_developer_color.dart';
+import 'package:flutter_ui_library/src/colors.dart';
 
 class UiButton extends StatefulWidget {
   final String? title;
@@ -18,6 +18,7 @@ class UiButton extends StatefulWidget {
   final double? strokeWidth;
   final double? loadingIconWidth;
   final String statusButton;
+  final Color hoverColor;
 
   const UiButton({
     super.key,
@@ -37,6 +38,7 @@ class UiButton extends StatefulWidget {
     this.strokeWidth,
     this.loadingIconWidth,
     required this.statusButton,
+    this.hoverColor = UiColors.greyColor,
   });
 
   @override
@@ -45,15 +47,31 @@ class UiButton extends StatefulWidget {
 
 class _UiButtonState extends State<UiButton> {
   bool _isDisable = false;
+  bool _isLoading = false;
+  bool _isHover = false;
+  late Color backgroundColor;
 
   bool checkStatusOnPressed() {
     if (_isDisable ||
         widget.statusButton == 'loading' ||
-        widget.statusButton == 'disable') {
+        widget.statusButton == 'disable' ||
+        _isLoading) {
       return false;
     }
 
     return true;
+  }
+
+  Color? handleBackgroundColor() {
+    if (_isDisable && !_isLoading) {
+      return widget.disableColor;
+    }
+
+    if (_isHover && !_isLoading) {
+      return widget.hoverColor;
+    }
+
+    return widget.backgroundColor;
   }
 
   @override
@@ -66,57 +84,85 @@ class _UiButtonState extends State<UiButton> {
       _isDisable = true;
     }
 
-    bool isEnable = checkStatusOnPressed();
+    bool? isEnable = checkStatusOnPressed();
+    Color? isBackgroundColor = handleBackgroundColor();
 
     return Container(
       margin: const EdgeInsets.only(bottom: 5, top: 5),
       width: widget.width,
       height: widget.height,
       child: GestureDetector(
-        onTap: isEnable == true
-            ? () => {
-                  widget.onPressed(),
-                  setState(() => _isDisable = true),
-                }
+        onTap: isEnable
+            ? () {
+                setState(() {
+                  widget.onPressed();
+                  _isDisable = true;
+                  _isLoading = true;
+                });
+              }
             : null,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
                 widget.borderRadius == null ? 30.0 : widget.borderRadius!),
-            color: _isDisable ? widget.disableColor : widget.backgroundColor,
+            color:
+                isBackgroundColor, // _isDisable ? widget.disableColor : widget.backgroundColor,
             border: Border.all(
               color: widget.borderRadiusColor ?? const Color(0xFF000000),
               width: 1,
             ),
           ),
-          child: widget.statusButton == 'loading'
+          child: widget.statusButton == 'loading' || _isLoading
               ? Center(
                   child: CircularProgressIndicator(
-                      color: widget.loadingIconColor ?? const Color(0xFFD9D9D9),
+                      color: widget.loadingIconColor ?? UiColors.neutralsGrey,
                       strokeWidth: widget.strokeWidth ?? 4.0,
                       strokeAlign: widget.loadingIconWidth ?? 0.0),
                 )
-              : Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                        child: Text(
-                          widget.title ?? 'Button',
-                          style: widget.textStyle ??
-                              TextStyle(
-                                color:
-                                    widget.fontColor ?? const Color(0xFF000000),
-                                fontSize: widget.fontSize ?? 14,
-                                fontWeight:
-                                    widget.fontWeight ?? FontWeight.normal,
-                              ),
-                        ),
+              : MouseRegion(
+                  cursor: isEnable
+                      ? SystemMouseCursors.click
+                      : SystemMouseCursors.alias,
+                  onEnter: (_) {
+                    setState(() => _isHover = true);
+                  },
+                  onExit: (_) {
+                    setState(() => _isHover = false);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: GestureDetector(
+                      onTap: isEnable
+                          ? () {
+                              setState(() {
+                                widget.onPressed();
+                                _isDisable = true;
+                                _isLoading = true;
+                              });
+                            }
+                          : null,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 3.0),
+                            child: Text(
+                              widget.title ?? 'Button',
+                              style: widget.textStyle ??
+                                  TextStyle(
+                                    color: widget.fontColor ??
+                                        const Color(0xFF000000),
+                                    fontSize: widget.fontSize ?? 14,
+                                    fontWeight:
+                                        widget.fontWeight ?? FontWeight.normal,
+                                  ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
         ),
