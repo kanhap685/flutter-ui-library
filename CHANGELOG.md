@@ -1,5 +1,5 @@
-## 0.0.11
-* TODO: Fix document
+## 0.0.12
+* TODO: add checkbox and radio
 
 
 
