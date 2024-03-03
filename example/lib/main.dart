@@ -207,6 +207,26 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
+
+          /// ##################### Example UI Box #####################
+          Story(
+            name: 'UiBox',
+            builder: (context) => Scaffold(
+              body: SizedBox(
+                width: double.infinity,
+                child: DraggableCard(
+                  children: <Widget>[
+                    Container(
+                      width: 100,
+                      height: 100,
+                      color: Colors.red,
+                      child: Text('ffff'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       );
 }
