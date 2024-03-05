@@ -37,7 +37,7 @@ class UiButton extends StatefulWidget {
     this.loadingIconColor,
     this.strokeWidth,
     this.loadingIconWidth,
-    required this.statusButton,
+    this.statusButton = "none",
     this.hoverColor = UiColors.greyColor,
   });
 
@@ -76,7 +76,7 @@ class _UiButtonState extends State<UiButton> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.statusButton == 'enable') {
+    if (widget.statusButton == 'enable' || widget.statusButton == 'none') {
       _isDisable = false;
     }
 
@@ -96,8 +96,8 @@ class _UiButtonState extends State<UiButton> {
             ? () {
                 setState(() {
                   widget.onPressed();
-                  _isDisable = true;
-                  _isLoading = true;
+                  _isDisable = widget.statusButton == "none" ? false : true;
+                  _isLoading = widget.statusButton == "none" ? false : true;
                 });
               }
             : null,
@@ -122,7 +122,7 @@ class _UiButtonState extends State<UiButton> {
               : MouseRegion(
                   cursor: isEnable
                       ? SystemMouseCursors.click
-                      : SystemMouseCursors.alias,
+                      : SystemMouseCursors.basic,
                   onEnter: (_) {
                     setState(() => _isHover = true);
                   },
@@ -136,8 +136,12 @@ class _UiButtonState extends State<UiButton> {
                           ? () {
                               setState(() {
                                 widget.onPressed();
-                                _isDisable = true;
-                                _isLoading = true;
+                                _isDisable = widget.statusButton == "none"
+                                    ? false
+                                    : true;
+                                _isLoading = widget.statusButton == "none"
+                                    ? false
+                                    : true;
                               });
                             }
                           : null,
