@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      initialStory: 'UiCard',
+      initialStory: 'UiAnimation',
       stories: [
         /// ##################### Example UI Button #####################
         Story(
@@ -215,7 +215,47 @@ class MyApp extends StatelessWidget {
           ),
         ),
 
-        /// ##################### Example UI Box #####################
+        /// ##################### Example UI Animation #####################
+        ///
+        ///
+        Story(
+          name: 'UiAnimation',
+          builder: (context) => Scaffold(
+            body: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  UiAnimation(
+                      onPressed: () {
+                        /// Your onPressed logic here
+                        logWarning('Todo >>> Your onPressed logic here');
+                      },
+                      child: Image.asset(
+                        'assets/images/your_image.png',
+                        width: 100,
+                      )),
+                  UiAnimation(
+                    onPressed: () {
+                      /// Your onPressed logic here
+                      logWarning('Todo >>> Your onPressed logic here');
+                    },
+                    child: UiButton(
+                      title: 'Default Button',
+                      onPressed: () {
+                        /// Your onPressed logic here
+                        logWarning('TODO >>> Your onPressed logic here');
+                      },
+                      backgroundColor: UiColors.bitterLime600,
+                      hoverColor: UiColors.bitterLime500,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
