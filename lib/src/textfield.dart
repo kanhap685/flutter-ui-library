@@ -150,7 +150,7 @@ class _UiTextFieldState extends State<UiTextField> {
               cursorColor: widget.cursorColor,
               cursorErrorColor: widget.cursorErrorColor,
               keyboardAppearance: widget.keyboardAppearance,
-              onChanged: (value) => {widget.onChanged!(value)},
+              onChanged: (value) => widget.onChanged(value),
             ),
           ],
         ),
