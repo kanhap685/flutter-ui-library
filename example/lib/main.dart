@@ -10,7 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      initialStory: 'UiAnimation',
+      initialStory: 'UiTextField',
+      plugins: [
+        ThemeModePlugin(initialTheme: ThemeMode.light),
+      ],
+      showPanel: true,
       stories: [
         /// ##################### Example UI Button #####################
         Story(
@@ -216,10 +220,8 @@ class MyApp extends StatelessWidget {
         ),
 
         /// ##################### Example UI Animation #####################
-        ///
-        ///
         Story(
-          name: 'UiAnimation',
+          name: 'UiTextField',
           builder: (context) => Scaffold(
             body: SizedBox(
               width: double.infinity,
@@ -227,35 +229,105 @@ class MyApp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  UiAnimation(
-                      onPressed: () {
-                        /// Your onPressed logic here
-                        logWarning('Todo >>> Your onPressed logic here');
-                      },
-                      child: Image.asset(
-                        'assets/images/your_image.png',
-                        width: 100,
-                      )),
-                  UiAnimation(
-                    onPressed: () {
+                  UiTextField(
+                    onChanged: (value) => {
                       /// Your onPressed logic here
-                      logWarning('Todo >>> Your onPressed logic here');
+                      logWarning('Todo >>> Your onSelected logic here $value')
                     },
-                    child: UiButton(
-                      title: 'Default Button',
-                      onPressed: () {
-                        /// Your onPressed logic here
-                        logWarning('TODO >>> Your onPressed logic here');
-                      },
-                      backgroundColor: UiColors.bitterLime600,
-                      hoverColor: UiColors.bitterLime500,
+                  ),
+                  UiTextField(
+                    autofocus: true,
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),
-                  )
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: UiColors.allFbbFbb60, width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    ),
+                    onChanged: (value) => {
+                      /// Your onPressed logic here
+                      logWarning('Todo >>> Your onSelected logic here $value')
+                    },
+                  ),
+                  UiTextField(
+                    showLoadingIcon: true,
+                    onChanged: (value) => {
+                      /// Your onPressed logic here
+                      logWarning('Todo >>> Your onSelected logic here $value')
+                    },
+                  ),
+                  UiTextField(
+                    showSuccessIcon: true,
+                    onChanged: (value) => {
+                      /// Your onPressed logic here
+                      logWarning('Todo >>> Your onSelected logic here $value')
+                    },
+                  ),
+                  UiTextField(
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: UiColors.greenColor700, width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    ),
+                    onChanged: (value) => {
+                      /// Your onPressed logic here
+                      logWarning('Todo >>> Your onSelected logic here $value')
+                    },
+                  ),
                 ],
               ),
             ),
           ),
         ),
+
+        //   border = const OutlineInputBorder(
+        // borderRadius: BorderRadius.all(Radius.circular(30.0)),
+
+        /// ##################### Example UI Animation #####################
+        // Story(
+        //   name: 'UiAnimation',
+        //   builder: (context) => Scaffold(
+        //     body: SizedBox(
+        //       width: double.infinity,
+        //       child: Column(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         crossAxisAlignment: CrossAxisAlignment.center,
+        //         children: [
+        //           UiAnimation(
+        //               onPressed: () {
+        //                 /// Your onPressed logic here
+        //                 logWarning('Todo >>> Your onPressed logic here');
+        //               },
+        //               child: Image.asset(
+        //                 'assets/images/giphy.gif',
+        //                 width: 100,
+        //               )),
+        //           UiAnimation(
+        //             onPressed: () {
+        //               /// Your onPressed logic here
+        //               logWarning('Todo >>> Your onPressed logic here');
+        //             },
+        //             child: UiButton(
+        //               title: 'Default Button',
+        //               onPressed: () {
+        //                 /// Your onPressed logic here
+        //                 logWarning('TODO >>> Your onPressed logic here');
+        //               },
+        //               backgroundColor: UiColors.bitterLime600,
+        //               hoverColor: UiColors.bitterLime500,
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
+
+        /// ##################### Example UI Animation #####################
       ],
     );
   }
