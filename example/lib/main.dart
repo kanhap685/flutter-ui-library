@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:flutter_ui_library/flutter_ui_library.dart';
 
@@ -102,7 +103,7 @@ class MyApp extends StatelessWidget {
                 children: [
                   UiRadioButton(
                       onSelected: (value) {
-                        /// Your onPressed logic here
+                        /// Your onSelected logic here
                         logWarning(
                             'Todo >>> Your onSelected logic here $value');
                       },
@@ -127,7 +128,7 @@ class MyApp extends StatelessWidget {
                           left: 0, right: 0, top: 5, bottom: 8)),
                   UiRadioButton(
                       onSelected: (value) {
-                        /// Your onPressed logic here
+                        /// Your onSelected logic here
                         logWarning(
                             'Todo >>> Your onSelected logic here $value');
                       },
@@ -191,7 +192,7 @@ class MyApp extends StatelessWidget {
                   ),
                   UiCheckbox(
                       onSelected: (value) {
-                        /// Your onPressed logic here
+                        /// Your onSelected logic here
                         logWarning(
                             'Todo >>> Your onSelected logic here $value');
                       },
@@ -231,12 +232,30 @@ class MyApp extends StatelessWidget {
                 children: [
                   UiTextField(
                     onChanged: (value) => {
-                      /// Your onPressed logic here
-                      logWarning('Todo >>> Your onSelected logic here $value')
+                      /// Your onChanged logic here
+                      logWarning('Todo >>> Your onChanged logic here $value')
+                    },
+                  ),
+                  UiTextField(
+                    showLoadingIcon: true,
+                    onChanged: (value) => {
+                      /// Your onChanged logic here
+                      logWarning('Todo >>> Your onChanged logic here $value')
+                    },
+                  ),
+                  UiTextField(
+                    showSuccessIcon: true,
+                    onChanged: (value) => {
+                      /// Your onChanged logic here
+                      logWarning('Todo >>> Your onChanged logic here $value')
                     },
                   ),
                   UiTextField(
                     autofocus: true,
+                    hintText: 'Enter your ก-ฮะ-๙ here...',
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp("[ก-ฮะ-๙]"))
+                    ],
                     border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),
@@ -246,25 +265,15 @@ class MyApp extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),
                     onChanged: (value) => {
-                      /// Your onPressed logic here
-                      logWarning('Todo >>> Your onSelected logic here $value')
+                      /// Your onChanged logic here
+                      logWarning('Todo >>> Your onChanged logic here $value')
                     },
                   ),
                   UiTextField(
-                    showLoadingIcon: true,
-                    onChanged: (value) => {
-                      /// Your onPressed logic here
-                      logWarning('Todo >>> Your onSelected logic here $value')
-                    },
-                  ),
-                  UiTextField(
-                    showSuccessIcon: true,
-                    onChanged: (value) => {
-                      /// Your onPressed logic here
-                      logWarning('Todo >>> Your onSelected logic here $value')
-                    },
-                  ),
-                  UiTextField(
+                    hintText: 'Enter your a-zA-Z here...',
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]"))
+                    ],
                     border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     ),
@@ -274,8 +283,18 @@ class MyApp extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     ),
                     onChanged: (value) => {
-                      /// Your onPressed logic here
-                      logWarning('Todo >>> Your onSelected logic here $value')
+                      /// Your onChanged logic here
+                      logWarning('Todo >>> Your onChanged logic here $value')
+                    },
+                  ),
+                  UiTextField(
+                    hintText: 'Enter your int here...',
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp("[0-9]"))
+                    ],
+                    onChanged: (value) => {
+                      /// Your onChanged logic here
+                      logWarning('Todo >>> Your onChanged logic here $value')
                     },
                   ),
                 ],
