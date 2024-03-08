@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      initialStory: 'UiTextField',
+      initialStory: 'UiAlertDialog',
       plugins: [
         ThemeModePlugin(initialTheme: ThemeMode.light),
       ],
@@ -220,7 +220,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
 
-        /// ##################### Example UI Animation #####################
+        /// ##################### Example UI TextField #####################
         Story(
           name: 'UiTextField',
           builder: (context) => Scaffold(
@@ -298,6 +298,21 @@ class MyApp extends StatelessWidget {
                     },
                   ),
                 ],
+              ),
+            ),
+          ),
+        ),
+
+        /// ##################### Example UI Dialog  #####################
+        Story(
+          name: 'UiAlertDialog',
+          builder: (context) => Scaffold(
+            body: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [UiAlertDialog(title: 'Title', message: 'Message')],
               ),
             ),
           ),
