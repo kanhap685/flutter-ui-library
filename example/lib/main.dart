@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      initialStory: 'UiAlertDialog',
+      initialStory: 'UiBottomSheet',
       plugins: [
         ThemeModePlugin(initialTheme: ThemeMode.light),
       ],
@@ -465,6 +465,74 @@ class MyApp extends StatelessWidget {
                         // )
                         // ! ------------------------------------------------------------------------------
                       ]))),
+        ),
+
+        /// ##################### Example UI Checkbox #####################
+        Story(
+          name: 'UiBottomSheet',
+          builder: (context) => Scaffold(
+            body: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) {
+                            return const UiBottomSheet(
+                                screenType: bottomsheet_enum.full);
+                          },
+                        );
+                      },
+                      child: const Text('Show Modal full screen'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const UiBottomSheet(
+                                screenType: bottomsheet_enum.half);
+                          },
+                        );
+                      },
+                      child: const Text('Show Modal half screen'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) {
+                            return const UiBottomSheet(
+                                screenType: bottomsheet_enum.customized);
+                          },
+                        );
+                      },
+                      child: const Text('Show Modal customized'),
+                    ),
+                  ),
+
+                  // ---------------------------------------------------
+                ],
+              ),
+            ),
+          ),
         ),
 
         //   border = const OutlineInputBorder(
