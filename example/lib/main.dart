@@ -307,15 +307,164 @@ class MyApp extends StatelessWidget {
         Story(
           name: 'UiAlertDialog',
           builder: (context) => Scaffold(
-            body: SizedBox(
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [UiAlertDialog(title: 'Title', message: 'Message')],
-              ),
-            ),
-          ),
+              body: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return UiAlertDialog(
+                                    // Use the UiAlertDialog class
+                                    // icon: Image.asset(
+                                    //   'assets/images/flutter.826x1024.png',
+                                    //   width: 20,
+                                    // ),
+                                    // iconPadding: const EdgeInsets.all(16.0),
+                                    // iconColor: Colors.blue,
+                                    title: const Text('Custom Dialog'),
+                                    // titlePadding: const EdgeInsets.symmetric(
+                                    //     horizontal: 24.0, vertical: 16.0),
+                                    // titleTextStyle: const TextStyle(
+                                    //     fontWeight: FontWeight.bold),
+                                    // content:
+                                    //     const Text('This is a custom dialog'),
+                                    // contentPadding: const EdgeInsets.all(24.0),
+                                    // contentTextStyle:
+                                    //     const TextStyle(color: Colors.grey),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          // Add your action here
+                                          logWarning(
+                                              'Todo >>> Your onPressed logic here action 1');
+                                        },
+                                        child: const Text('Action 1'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          // Add your action here
+                                          logWarning(
+                                              'Todo >>> Your onPressed logic here action 2');
+                                        },
+                                        child: const Text('Action 2'),
+                                      ),
+                                    ],
+                                    // actionsPadding: const EdgeInsets.all(8.0),
+                                    // actionsAlignment: MainAxisAlignment.center,
+                                    // actionsOverflowAlignment:
+                                    //     OverflowBarAlignment.end,
+                                    // actionsOverflowDirection:
+                                    //     VerticalDirection.down,
+                                    // actionsOverflowButtonSpacing: 8.0,
+                                    // buttonPadding: const EdgeInsets.symmetric(
+                                    //     horizontal: 16.0),
+                                    // backgroundColor: Colors.white,
+                                    // elevation: 4.0,
+                                    // shadowColor: Colors.black,
+                                    // surfaceTintColor: Colors.blue,
+                                    // semanticLabel: 'Your Semantic Label',
+                                    // insetPadding: const EdgeInsets.all(16.0),
+                                    // clipBehavior: Clip.hardEdge,
+                                    // shape: RoundedRectangleBorder(
+                                    //     borderRadius:
+                                    //         BorderRadius.circular(8.0)),
+                                    // alignment: Alignment.center,
+                                    // scrollable: true,
+                                  );
+                                },
+                              );
+                            },
+                            child: const Text('Show Dialog'),
+                          ),
+                        ),
+
+                        const SizedBox(
+                          height: 8,
+                        ),
+
+                        Center(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return UiAlertDialog(
+                                    title: const Text('Custom Dialog'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          // Add your action here
+                                          logWarning(
+                                              'Todo >>> Your onPressed logic here action 1');
+                                        },
+                                        child: const Text('Action 1'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          // Add your action here
+                                          logWarning(
+                                              'Todo >>> Your onPressed logic here action 2');
+                                        },
+                                        child: const Text('Action 2'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: const Text('Show Dialog'),
+                          ),
+                        ),
+
+                        // ! ------------------------------------------------------------------------------
+                        // UiAlertDialog(
+                        //     title: "Show Ui AlertDialog",
+                        //     content: Column(
+                        //       children: [
+                        //         Text('This is a modal dialog.'),
+                        //       ],
+                        //     ))
+                        // ! ------------------------------------------------------------------------------
+                        // Center(
+                        //   child:
+                        //   ElevatedButton(
+                        //     onPressed: () {
+                        //       showDialog(
+                        //         context: context,
+                        //         builder: (BuildContext context) {
+                        //           return const UiAlertDialog(
+                        //               title: "Show Ui AlertDialog",
+                        //               content: Column(
+                        //                 children: [
+                        //                   Text('This is a modal dialog.'),
+                        //                 ],
+                        //               ));
+                        //           // AlertDialog(
+                        //           //   title: const Text('Alert'),
+                        //           //   content: const Text('This is a modal dialog.'),
+                        //           //   actions: <Widget>[
+                        //           //     TextButton(
+                        //           //       onPressed: () {
+                        //           //         Navigator.of(context).pop();
+                        //           //       },
+                        //           //       child: const Text('Close'),
+                        //           //     ),
+                        //           //   ],
+                        //           // );
+                        //         },
+                        //       );
+                        //     },
+                        //     child: const Text('Show Modal'),
+                        //   ),
+                        // )
+                        // ! ------------------------------------------------------------------------------
+                      ]))),
         ),
 
         //   border = const OutlineInputBorder(
