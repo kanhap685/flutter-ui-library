@@ -383,11 +383,9 @@ class MyApp extends StatelessWidget {
                             child: const Text('Show Dialog'),
                           ),
                         ),
-
                         const SizedBox(
                           height: 8,
                         ),
-
                         Center(
                           child: ElevatedButton(
                             onPressed: () {
@@ -421,49 +419,6 @@ class MyApp extends StatelessWidget {
                             child: const Text('Show Dialog'),
                           ),
                         ),
-
-                        // ! ------------------------------------------------------------------------------
-                        // UiAlertDialog(
-                        //     title: "Show Ui AlertDialog",
-                        //     content: Column(
-                        //       children: [
-                        //         Text('This is a modal dialog.'),
-                        //       ],
-                        //     ))
-                        // ! ------------------------------------------------------------------------------
-                        // Center(
-                        //   child:
-                        //   ElevatedButton(
-                        //     onPressed: () {
-                        //       showDialog(
-                        //         context: context,
-                        //         builder: (BuildContext context) {
-                        //           return const UiAlertDialog(
-                        //               title: "Show Ui AlertDialog",
-                        //               content: Column(
-                        //                 children: [
-                        //                   Text('This is a modal dialog.'),
-                        //                 ],
-                        //               ));
-                        //           // AlertDialog(
-                        //           //   title: const Text('Alert'),
-                        //           //   content: const Text('This is a modal dialog.'),
-                        //           //   actions: <Widget>[
-                        //           //     TextButton(
-                        //           //       onPressed: () {
-                        //           //         Navigator.of(context).pop();
-                        //           //       },
-                        //           //       child: const Text('Close'),
-                        //           //     ),
-                        //           //   ],
-                        //           // );
-                        //         },
-                        //       );
-                        //     },
-                        //     child: const Text('Show Modal'),
-                        //   ),
-                        // )
-                        // ! ------------------------------------------------------------------------------
                       ]))),
         ),
 
@@ -535,12 +490,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
 
-        //   border = const OutlineInputBorder(
-        // borderRadius: BorderRadius.all(Radius.circular(30.0)),
-
         /// ##################### Example UI Animation #####################
-        ///
-        ///
         Story(
           name: 'UiBottomSheet1',
           builder: (context) => Scaffold(
@@ -598,45 +548,6 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-
-        // Story(
-        //   name: 'UiAnimation',
-        //   builder: (context) => Scaffold(
-        //     body: SizedBox(
-        //       width: double.infinity,
-        //       child: Column(
-        //         mainAxisAlignment: MainAxisAlignment.center,
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           UiAnimation(
-        //               onPressed: () {
-        //                 /// Your onPressed logic here
-        //                 logWarning('Todo >>> Your onPressed logic here');
-        //               },
-        //               child: Image.asset(
-        //                 'assets/images/giphy.gif',
-        //                 width: 100,
-        //               )),
-        //           UiAnimation(
-        //             onPressed: () {
-        //               /// Your onPressed logic here
-        //               logWarning('Todo >>> Your onPressed logic here');
-        //             },
-        //             child: UiButton(
-        //               title: 'Default Button',
-        //               onPressed: () {
-        //                 /// Your onPressed logic here
-        //                 logWarning('TODO >>> Your onPressed logic here');
-        //               },
-        //               backgroundColor: UiColors.bitterLime600,
-        //               hoverColor: UiColors.bitterLime500,
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
-        // ),
 
         /// ##################### Example UI Modal #####################
         Story(
