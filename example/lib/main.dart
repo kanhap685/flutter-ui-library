@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      initialStory: 'UiBottomSheet',
+      initialStory: 'UiBottomSheetxx',
       plugins: [
         ThemeModePlugin(initialTheme: ThemeMode.light),
       ],
@@ -539,6 +539,66 @@ class MyApp extends StatelessWidget {
         // borderRadius: BorderRadius.all(Radius.circular(30.0)),
 
         /// ##################### Example UI Animation #####################
+        ///
+        ///
+        Story(
+          name: 'UiBottomSheet1',
+          builder: (context) => Scaffold(
+            body: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            color: Colors.white,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                ListTile(
+                                  leading: Icon(Icons.music_note),
+                                  title: Text('Music'),
+                                  onTap: () {
+                                    // Handle music item tap
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                ListTile(
+                                  leading: Icon(Icons.photo),
+                                  title: Text('Photos'),
+                                  onTap: () {
+                                    // Handle photos item tap
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                ListTile(
+                                  leading: Icon(Icons.video_label),
+                                  title: Text('Videos'),
+                                  onTap: () {
+                                    // Handle videos item tap
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                          // YourBottomSheetWidget(); // ใส่ Widget ของ Bottom Sheet ที่คุณต้องการแสดง
+                        },
+                      );
+                    },
+                    child: Text('Show Bottom Sheet'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+
         // Story(
         //   name: 'UiAnimation',
         //   builder: (context) => Scaffold(
@@ -578,7 +638,100 @@ class MyApp extends StatelessWidget {
         //   ),
         // ),
 
-        /// ##################### Example UI Animation #####################
+        /// ##################### Example UI Modal #####################
+        Story(
+          name: 'UiModal',
+          builder: (context) => Scaffold(
+            body: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            insetPadding: const EdgeInsets.all(28.0),
+                            backgroundColor: Colors.transparent,
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    color: Colors.red,
+                                    child: const Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'This is a custom modal',
+                                            style: TextStyle(fontSize: 24.0),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: IconButton(
+                                    icon: const Icon(Icons.close),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: 10,
+                                  left: 10,
+                                  right: 10,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          // Add your action here
+                                          logWarning(
+                                              'Todo >>> Your onPressed logic here action 1');
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('Action 1'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          // Add your action here
+                                          logWarning(
+                                              'Todo >>> Your onPressed logic here action 2');
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('Action 2'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: const Text('Show Ui Modal'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
