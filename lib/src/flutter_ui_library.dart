@@ -7,3 +7,4 @@ export './checkbox.dart';
 export './draggable_card.dart';
 export './animation.dart';
 export './textfield.dart';
+export './enum.dart';
