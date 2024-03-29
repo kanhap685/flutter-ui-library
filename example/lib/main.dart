@@ -10,10 +10,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      initialStory: 'UiTextField',
-      plugins: [
-        ThemeModePlugin(initialTheme: ThemeMode.light),
-      ],
+      initialStory: 'UiDashboard',
+      // plugins: [
+      //   ThemeModePlugin(initialTheme: ThemeMode.light),
+      // ],
       showPanel: true,
       stories: [
         /// ##################### Example UI Button #####################
@@ -278,6 +278,25 @@ class MyApp extends StatelessWidget {
                       logWarning('Todo >>> Your onSelected logic here $value')
                     },
                   ),
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        /// ##################### Example UI Animation #####################
+        Story(
+          name: 'UiDashboard',
+          builder: (context) => const Scaffold(
+            body: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  UiDashboard(
+                    images: 'images/woman.png'
+                  )
                 ],
               ),
             ),
