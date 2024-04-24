@@ -3,15 +3,20 @@ import 'package:flutter/services.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:flutter_ui_library/flutter_ui_library.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  List<List<String>> groups = [
+    ['Group 1 Item 1', 'Group 1 Item 2'],
+    ['Group 2 Item 1', 'Group 2 Item 2', 'Group 2 Item 3'],
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Storybook(
-      initialStory: 'UiHeader',
+      initialStory: 'ExpansionTile',
       plugins: [
         ThemeModePlugin(initialTheme: ThemeMode.light),
       ],
@@ -706,6 +711,81 @@ class MyApp extends StatelessWidget {
                       ],
                     ),
                   )
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        /// ##################### Example UI Modal #####################
+        Story(
+          name: 'ExpansionTile',
+          builder: (context) => Scaffold(
+            body: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ExpansionTile(
+                    title: const Text('Groups'),
+                    children: <Widget>[
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: groups.length,
+                        itemBuilder: (context, groupIndex) {
+                          return ExpansionTile(
+                            title: Text('Group ${groupIndex + 1}'),
+                            children: <Widget>[
+                              ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: groups[groupIndex].length,
+                                itemBuilder: (context, itemIndex) {
+                                  return Card(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 0.0, vertical: 1.0),
+                                    color:
+                                        Colors.grey[300], // สีพื้นหลังของ Card
+                                    child: ListTile(
+                                      title: Text(
+                                        groups[groupIndex][itemIndex],
+                                      ),
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 20.0,
+                                              vertical: 10.0), // ระยะห่างขอบ
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  )
+
+                  // -----------------------------
+                  // ListView.builder(
+                  //   shrinkWrap: true,
+                  //   itemCount: groups.length,
+                  //   itemBuilder: (context, groupIndex) {
+                  //     return ExpansionTile(
+                  //       title: Text('Group ${groupIndex + 1}'),
+                  //       children: <Widget>[
+                  //         ListView.builder(
+                  //           shrinkWrap: true,
+                  //           itemCount: groups[groupIndex].length,
+                  //           itemBuilder: (context, itemIndex) {
+                  //             return ListTile(
+                  //               title: Text(groups[groupIndex][itemIndex]),
+                  //             );
+                  //           },
+                  //         ),
+                  //       ],
+                  //     );
+                  //   },
+                  // ),
                 ],
               ),
             ),
