@@ -285,23 +285,39 @@ class MyApp extends StatelessWidget {
         ),
 
         /// ##################### Example UI Animation #####################
+        // Story(
+        //   name: 'UiDashboard',
+        //   builder: (context) => const Scaffold(
+        //     body: SizedBox(
+        //       width: double.infinity,
+        //       child: Column(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         crossAxisAlignment: CrossAxisAlignment.center,
+        //         children: [
+        //           UiDashboard(
+        //             images: 'images/woman.png'
+        //           )
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
+
+
         Story(
           name: 'UiDashboard',
           builder: (context) => const Scaffold(
-            body: SizedBox(
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+            body: Column(
                 children: [
                   UiDashboard(
                     images: 'images/woman.png'
                   )
                 ],
               ),
-            ),
           ),
         ),
+
+
 
         //   border = const OutlineInputBorder(
         // borderRadius: BorderRadius.all(Radius.circular(30.0)),
