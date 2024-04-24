@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_library/src/colors.dart';
+import 'package:flutter_ui_library/flutter_ui_library.dart';
 
 class UiButton extends StatefulWidget {
   final String? title;
@@ -17,7 +17,7 @@ class UiButton extends StatefulWidget {
   final Color? loadingIconColor;
   final double? strokeWidth;
   final double? loadingIconWidth;
-  final String statusButton;
+  final UiButtonEnum statusButton;
   final Color hoverColor;
 
   const UiButton({
@@ -37,7 +37,7 @@ class UiButton extends StatefulWidget {
     this.loadingIconColor,
     this.strokeWidth,
     this.loadingIconWidth,
-    this.statusButton = "none",
+    this.statusButton = UiButtonEnum.none,
     this.hoverColor = UiColors.greyColor,
   });
 
@@ -53,8 +53,8 @@ class _UiButtonState extends State<UiButton> {
 
   bool checkStatusOnPressed() {
     if (_isDisable ||
-        widget.statusButton == 'loading' ||
-        widget.statusButton == 'disable' ||
+        widget.statusButton == UiButtonEnum.loading ||
+        widget.statusButton == UiButtonEnum.disable ||
         _isLoading) {
       return false;
     }
@@ -76,11 +76,11 @@ class _UiButtonState extends State<UiButton> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.statusButton == 'enable' || widget.statusButton == 'none') {
+    if (widget.statusButton == UiButtonEnum.enable || widget.statusButton == UiButtonEnum.none) {
       _isDisable = false;
     }
 
-    if (widget.statusButton == 'disable') {
+    if (widget.statusButton == UiButtonEnum.disable) {
       _isDisable = true;
     }
 
@@ -96,8 +96,8 @@ class _UiButtonState extends State<UiButton> {
             ? () {
                 setState(() {
                   widget.onPressed();
-                  _isDisable = widget.statusButton == "none" ? false : true;
-                  _isLoading = widget.statusButton == "none" ? false : true;
+                  _isDisable = widget.statusButton == UiButtonEnum.none ? false : true;
+                  _isLoading = widget.statusButton == UiButtonEnum.none ? false : true;
                 });
               }
             : null,
@@ -112,7 +112,7 @@ class _UiButtonState extends State<UiButton> {
               width: 1,
             ),
           ),
-          child: widget.statusButton == 'loading' || _isLoading
+          child: widget.statusButton == UiButtonEnum.loading || _isLoading
               ? Center(
                   child: CircularProgressIndicator(
                       color: widget.loadingIconColor ?? UiColors.neutralsGrey,
@@ -136,10 +136,10 @@ class _UiButtonState extends State<UiButton> {
                           ? () {
                               setState(() {
                                 widget.onPressed();
-                                _isDisable = widget.statusButton == "none"
+                                _isDisable = widget.statusButton == UiButtonEnum.none
                                     ? false
                                     : true;
-                                _isLoading = widget.statusButton == "none"
+                                _isLoading = widget.statusButton == UiButtonEnum.none
                                     ? false
                                     : true;
                               });

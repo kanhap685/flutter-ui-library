@@ -47,13 +47,13 @@ class MyApp extends StatelessWidget {
                       /// Your onPressed logic here
                       logWarning('TODO >>> Your onPressed logic here');
                     },
-                    statusButton: 'enable',
+                    statusButton: UiButtonEnum.enable,
                     backgroundColor: UiColors.allFbbFbb40,
                     hoverColor: UiColors.allFbbFbb50,
                   ),
                   UiButton(
                     title: 'Disable',
-                    statusButton: 'disable',
+                    statusButton: UiButtonEnum.disable,
                     onPressed: () {
                       /// Your onPressed logic here
                       logWarning('TODO >>> Your onPressed logic here');
@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
                       logWarning('TODO >>> Your onPressed logic here');
                     },
                     title: 'Loading',
-                    statusButton: 'loading',
+                    statusButton: UiButtonEnum.loading,
                   ),
                   UiButton(
                     onPressed: () {
@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
                     loadingIconColor: const Color.fromARGB(255, 250, 63, 12),
                     strokeWidth: 4.0,
                     loadingIconWidth: 0.0,
-                    statusButton: 'enable', // 'enable'  , 'disable' , 'loading'
+                    statusButton: UiButtonEnum.enable,
                     backgroundColor: UiColors.primaryColor,
                     hoverColor: UiColors.allStarStar60,
                   )
