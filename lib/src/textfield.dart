@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_ui_library/flutter_ui_library.dart';
 
 class UiTextField extends StatefulWidget {
+  final TextEditingController? controller;
   final TextStyle? textStyle;
   final EdgeInsets? contentPadding;
   final String? hintText;
@@ -38,6 +39,7 @@ class UiTextField extends StatefulWidget {
 
   const UiTextField({
     super.key,
+    this.controller,
     this.textStyle = const TextStyle(
       color: UiColors.blackColor,
       fontWeight: FontWeight.bold,
@@ -101,6 +103,7 @@ class _UiTextFieldState extends State<UiTextField> {
           alignment: Alignment.centerRight,
           children: [
             TextFormField(
+              controller: widget.controller,
               style: widget.textStyle,
               decoration: InputDecoration(
                 contentPadding: widget.contentPadding,
@@ -138,10 +141,6 @@ class _UiTextFieldState extends State<UiTextField> {
               maxLines: widget.maxLines,
               maxLength: widget.maxLength,
               inputFormatters: widget.inputFormatters,
-              // [
-              //   widget.inputFormatters
-              //   // FilteringTextInputFormatter.allow(RegExp("[0-9a-zA-Zก-ฮะ-๙]"))
-              // ],
               enabled: widget.enabled,
               cursorWidth: widget.cursorWidth,
               cursorHeight: widget.cursorHeight,
